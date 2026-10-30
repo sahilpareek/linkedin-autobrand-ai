@@ -6,19 +6,21 @@ AI-powered tool jo aapke **Resume (PDF)** ko analyze karta hai, aapke actual ski
 
 ## 🌟 Key Features
 
-1. **📄 Resume Skill Parsing:**
-   - PDF resume upload karo, AI automatically technical skills, domain expertise aur high-converting content topics extract kar leta hai.
-2. **✍️ AI Post Generator (with Hashtags & Hooks):**
-   - High-retention LinkedIn formatting (catchy hook, bullet points, spacing, call to action, and hashtags).
-   - Tech tips, code snippets, lessons learned, and system design breakdown styles.
-3. **🛠️ AI Refinement (Change on Demand):**
-   - Agar post me kuch modify karna ho (jaise: *"5 lines of Python code add karo"*, *"tone casual karo"*, *"30% short karo"*), toh AI turant aapke instructions ke hisab se draft update kar dega!
-4. **📱 WhatsApp Preview & Approval:**
-   - Twilio WhatsApp integration ke zariye generated post seedhe aapke WhatsApp par aayegi preview ke liye.
-5. **📱 Mobile-Friendly Streamlit UI:**
-   - Clean, touch-friendly UI jisse aap direct apne phone ke browser se control kar sakte hain.
-6. **⏰ Cloud Automation (GitHub Actions):**
-   - Bila kisi server ya laptop ko 24/7 on rakhe, GitHub Actions daily scheduled time par bot run kar sakta hai.
+1. **🕒 3 Posts Per Day (Peak Traffic Timing):**
+   - **🌅 Morning (08:30 - 09:30 AM IST):** UI/UX Design Short Tricks (Figma, Adobe XD, Mobile button sizes, 8pt grid, contrast rules). *Inspired by Behance, Dribbble & Pinterest principles but 100% original.*
+   - **☀️ Afternoon (01:00 - 02:00 PM IST):** Frontend Development Short Tricks (CSS magic, JavaScript hacks, React optimization, clean one-liners).
+   - **🌙 Evening (06:30 - 07:30 PM IST):** Trending AI News & Tool Breakdown (Major updates, breakthrough models, actionable summaries).
+   - **🎉 Weekend Special (Sat & Sun):** Interactive Polls, Quizzes & "A vs B Design/Code Challenge" to get 5x more comments and algorithmic boost!
+2. **🗣️ Super Simple English (No Hard Words):**
+   - Prompts are strictly tuned for Grade 6 simple conversational English. No heavy vocabulary or hard-to-read academic jargon.
+3. **📈 10 to 15 High-Traffic Hashtags:**
+   - Every post includes 10-15 targeted hashtags tailored to that specific post topic to maximize reach.
+4. **🖼️ Automated Visual Graphic Banner (1080x1080):**
+   - Har post ke liye high-res visual card banner generate hota hai jise direct LinkedIn post ke sath attach kiya ja sakta hai.
+5. **🛠️ AI On-Demand Refinement:**
+   - Agar post me code snippet, tone, ya layout badalna ho, direct feedback dekar 1-click me rewrite karwayein.
+6. **📱 WhatsApp Preview & Mobile Streamlit UI:**
+   - Phone par WhatsApp message aayega preview ke liye aur mobile-friendly browser UI se approval/changes kar sakte hain.
 
 ---
 
