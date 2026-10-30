@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoBrand AI — Autonomous LinkedIn Branding via WhatsApp</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #090d16;
+            color: #f1f5f9;
+        }
+        .glow-mesh {
+            background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.18) 0%, rgba(15, 23, 42, 0) 70%);
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-input {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+        }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden">
+    <!-- Ambient Background Glow -->
+    <div class="fixed inset-0 glow-mesh pointer-events-none"></div>
+
+    <!-- Navigation -->
+    <header class="border-b border-slate-800/80 sticky top-0 z-50 backdrop-blur-md bg-slate-950/70">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                    <span class="text-xl">💼</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">AutoBrand AI</h1>
+                    <p class="text-xs text-indigo-400 font-medium">WhatsApp-First LinkedIn Growth</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Autonomous System Active
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="max-w-4xl mx-auto px-4 py-10 sm:py-16 relative z-10">
+        <div class="text-center space-y-4 mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                ✨ Zero Manual Effort • 100% WhatsApp Approval
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                Turn Your Resume into <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Daily LinkedIn Growth</span>
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                Upload your resume once. Our AI automatically crafts 3 daily viral posts (UI/UX Tricks, Frontend Code with your GitHub link, and Trending AI News) in simple English, sending drafts directly to your WhatsApp for 1-click approval.
+            </p>
+        </div>
+
+        <!-- 3 Daily Schedule Highlights -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+            <div class="glass-card rounded-2xl p-5 border border-indigo-500/20">
+                <div class="text-2xl mb-2">🌅</div>
+                <div class="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-1">09:00 AM IST</div>
+                <h4 class="text-sm font-bold text-white mb-1">UI/UX Design Tricks</h4>
+                <p class="text-xs text-slate-400">Figma, mobile button sizes, 8pt grid, and visual design rules.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-5 border border-purple-500/20">
+                <div class="text-2xl mb-2">☀️</div>
+                <div class="text-xs font-bold text-purple-400 uppercase tracking-wider mb-1">01:00 PM IST</div>
+                <h4 class="text-sm font-bold text-white mb-1">Frontend Shortcuts</h4>
+                <p class="text-xs text-slate-400">CSS hacks, modern JS, React tips + your GitHub code link.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-5 border border-pink-500/20">
+                <div class="text-2xl mb-2">🌙</div>
+                <div class="text-xs font-bold text-pink-400 uppercase tracking-wider mb-1">07:00 PM IST</div>
+                <h4 class="text-sm font-bold text-white mb-1">Trending AI News</h4>
+                <p class="text-xs text-slate-400">Latest breakthrough models, tools, and visual graphics.</p>
+            </div>
+        </div>
+
+        <!-- Onboarding Registration Form Card -->
+        <div class="glass-card rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+            <div class="flex items-center space-x-3 mb-6 pb-6 border-b border-slate-800">
+                <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold">1</div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Join & Activate Your Automated Agent</h3>
+                    <p class="text-xs text-slate-400">Fill your details once. Your data is isolated and 100% private.</p>
+                </div>
+            </div>
+
+            <form id="onboardForm" class="space-y-6" enctype="multipart/form-data">
+                <!-- Name & WhatsApp -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Full Name *</label>
+                        <input type="text" name="name" required placeholder="e.g. Aman Verma"
+                            class="w-full glass-input rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">WhatsApp Number (with country code) *</label>
+                        <input type="text" name="phone" required placeholder="+919876543210"
+                            class="w-full glass-input rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none transition">
+                        <span class="text-[11px] text-slate-500 mt-1 block">Drafts & approvals will arrive directly here.</span>
+                    </div>
+                </div>
+
+                <!-- GitHub Username & LinkedIn Token -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">GitHub Username *</label>
+                        <input type="text" name="github_username" required placeholder="e.g. aman-codes"
+                            class="w-full glass-input rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none transition">
+                        <span class="text-[11px] text-slate-500 mt-1 block">Your code tips will automatically link to your GitHub.</span>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">LinkedIn Access Token / Member URN *</label>
+                        <input type="password" name="linkedin_token" required placeholder="Paste your LinkedIn Token"
+                            class="w-full glass-input rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none transition">
+                        <span class="text-[11px] text-slate-500 mt-1 block">Secure official token for auto-publishing your approved posts.</span>
+                    </div>
+                </div>
+
+                <!-- Resume File Upload (Drag & Drop) -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Upload Resume (PDF) *</label>
+                    <div class="relative border-2 border-dashed border-slate-700 hover:border-indigo-500/60 rounded-2xl p-6 text-center transition cursor-pointer bg-slate-900/40"
+                         onclick="document.getElementById('resumeInput').click()">
+                        <input type="file" id="resumeInput" name="resume" accept=".pdf" required class="hidden" onchange="showFileName(this)">
+                        <div class="text-3xl mb-2">📄</div>
+                        <p id="filePrompt" class="text-sm font-semibold text-slate-300">Click or Drag & Drop your Resume PDF here</p>
+                        <p class="text-xs text-slate-500 mt-1">AI will parse your technical stack, projects, and domain expertise.</p>
+                        <p id="selectedFileName" class="text-xs font-bold text-indigo-400 mt-2 hidden"></p>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submitBtn"
+                    class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-base shadow-lg shadow-indigo-600/30 transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center space-x-2">
+                    <span id="btnText">🚀 Activate My Automated LinkedIn Agent</span>
+                    <span id="btnSpinner" class="hidden">
+                        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                        </svg>
+                    </span>
+                </button>
+            </form>
+
+            <!-- Success Alert Modal -->
+            <div id="successBox" class="hidden mt-6 p-6 rounded-2xl bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 space-y-2">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl">🎉</span>
+                    <h4 class="font-bold text-base text-white">Agent Successfully Activated!</h4>
+                </div>
+                <p class="text-xs leading-relaxed text-emerald-200">
+                    Your resume has been analyzed and your WhatsApp is connected. You will now receive daily drafts on WhatsApp at peak traffic times. Reply <strong>APPROVE</strong> to post or reply with changes anytime!
+                </p>
+            </div>
+
+            <!-- Error Alert -->
+            <div id="errorBox" class="hidden mt-6 p-4 rounded-xl bg-red-950/60 border border-red-500/30 text-red-300 text-xs"></div>
+        </div>
+
+        <!-- How WhatsApp Workflow Operates (Visual) -->
+        <div class="mt-16 text-center space-y-6">
+            <h3 class="text-xl font-bold text-white">How WhatsApp Control Works (No Web App Needed)</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
+                <div class="glass-card p-5 rounded-2xl border border-slate-800">
+                    <div class="text-sm font-bold text-indigo-400 mb-2">1. Receive Draft</div>
+                    <p class="text-xs text-slate-400">At scheduled times, bot sends you the full post draft + image idea + 10-15 hashtags on WhatsApp.</p>
+                </div>
+                <div class="glass-card p-5 rounded-2xl border border-slate-800">
+                    <div class="text-sm font-bold text-purple-400 mb-2">2. Review & Request Changes</div>
+                    <p class="text-xs text-slate-400">Want changes? Simply reply on WhatsApp (e.g. 'Make it shorter', 'Add React snippet'). Bot updates it instantly.</p>
+                </div>
+                <div class="glass-card p-5 rounded-2xl border border-slate-800">
+                    <div class="text-sm font-bold text-emerald-400 mb-2">3. 1-Word Approval</div>
+                    <p class="text-xs text-slate-400">Reply <strong>APPROVE</strong> or <strong>YES</strong>. Bot automatically uploads the post & graphic directly to your LinkedIn.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500 relative z-10">
+        <p>AutoBrand AI • Multi-Tenant Autonomous LinkedIn Agent • WhatsApp First Architecture</p>
+    </footer>
+
+    <script>
+        function showFileName(input) {
+            const file = input.files[0];
+            if (file) {
+                const label = document.getElementById("selectedFileName");
+                label.textContent = "Selected: " + file.name + " (" + (file.size / 1024).toFixed(1) + " KB)";
+                label.classList.remove("hidden");
+                document.getElementById("filePrompt").textContent = "File attached!";
+            }
+        }
+
+        const form = document.getElementById("onboardForm");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById("submitBtn");
+            const btnText = document.getElementById("btnText");
+            const btnSpinner = document.getElementById("btnSpinner");
+            const successBox = document.getElementById("successBox");
+            const errorBox = document.getElementById("errorBox");
+
+            successBox.classList.add("hidden");
+            errorBox.classList.add("hidden");
+            submitBtn.disabled = true;
+            btnText.textContent = "Analyzing Resume & Activating...";
+            btnSpinner.classList.remove("hidden");
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch("/api/register", {
+                    method: "POST",
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    successBox.classList.remove("hidden");
+                    form.reset();
+                    document.getElementById("selectedFileName").classList.add("hidden");
+                    document.getElementById("filePrompt").textContent = "Click or Drag & Drop your Resume PDF here";
+                } else {
+                    errorBox.textContent = result.error || "Registration failed. Please check your inputs.";
+                    errorBox.classList.remove("hidden");
+                }
+            } catch (err) {
+                errorBox.textContent = "Network error: " + err.message;
+                errorBox.classList.remove("hidden");
+            } finally {
+                submitBtn.disabled = false;
+                btnText.textContent = "🚀 Activate My Automated LinkedIn Agent";
+                btnSpinner.classList.add("hidden");
+            }
+        });
+    </script>
+</body>
+</html>
