@@ -1,11 +1,27 @@
-name: LinkedIn Daily Automation Bot
+name: LinkedIn 3x Daily AutoBrand Bot
 
 on:
   schedule:
-    # 04:30 UTC = 10:00 AM IST (Every day)
-    - cron: '30 4 * * *'
-  workflow_dispatch: # Allows manual trigger from GitHub UI
+    # 1. Morning Slot: 03:30 UTC = 09:00 AM IST (UI/UX Short Tricks)
+    - cron: '30 3 * * *'
+    # 2. Afternoon Slot: 07:30 UTC = 01:00 PM IST (Frontend Code Shortcuts)
+    - cron: '30 7 * * *'
+    # 3. Evening Slot: 13:30 UTC = 07:00 PM IST (Trending AI News & Breakdown)
+    - cron: '30 13 * * *'
+
+  workflow_dispatch:
     inputs:
+      slot:
+        description: 'Post Slot'
+        required: true
+        default: 'auto'
+        type: choice
+        options:
+          - auto
+          - morning
+          - afternoon
+          - evening
+          - weekend
       mode:
         description: 'Run Mode (preview to WhatsApp or direct post)'
         required: true
@@ -16,7 +32,7 @@ on:
           - post
 
 jobs:
-  run-bot:
+  run-slot-bot:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -33,7 +49,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run LinkedIn Bot
+      - name: Run LinkedIn Automation
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
@@ -43,5 +59,6 @@ jobs:
           TWILIO_WHATSAPP_NUMBER: ${{ secrets.TWILIO_WHATSAPP_NUMBER }}
           USER_WHATSAPP_NUMBER: ${{ secrets.USER_WHATSAPP_NUMBER }}
         run: |
+          SLOT="${{ github.event.inputs.slot || 'auto' }}"
           MODE="${{ github.event.inputs.mode || 'preview' }}"
-          python cli_auto_runner.py --mode $MODE
+          python cli_auto_runner.py --slot $SLOT --mode $MODE
