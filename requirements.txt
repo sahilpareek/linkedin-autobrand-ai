@@ -1,7 +1,11 @@
 streamlit>=1.35.0
+fastapi>=0.111.0
+uvicorn>=0.30.0
+python-multipart>=0.0.9
 google-genai>=0.1.1
 pypdf>=4.2.0
 requests>=2.31.0
 twilio>=9.0.0
 python-dotenv>=1.0.1
 pillow>=10.0.0
+schedule>=1.2.1

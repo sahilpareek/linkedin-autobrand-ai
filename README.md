@@ -1,64 +1,71 @@
-# 💼 LinkedIn AutoBrand AI Bot (Resume to LinkedIn with WhatsApp Review)
+# 🚀 AutoBrand AI — Multi-User Autonomous LinkedIn Branding via WhatsApp
 
-AI-powered tool jo aapke **Resume (PDF)** ko analyze karta hai, aapke actual skills aur projects ke related **engaging LinkedIn posts** generate karta hai, aur **WhatsApp par approval preview** bhejta hai taaki aap mobile se hi review karke direct post ya edits kar sakein!
+Ek fully automated system jisme **koi bhi user** website par jakar apna **Resume (PDF)**, **GitHub username**, aur **LinkedIn Token** enter karke register kar sakta hai. Iske baad user ko website kholne ki ya kuch bhi download karne ki bilkul zarurat nahi hai — **sab kuch 100% WhatsApp se handle hoga!**
 
 ---
 
 ## 🌟 Key Features
 
-1. **🕒 3 Posts Per Day (Peak Traffic Timing):**
-   - **🌅 Morning (08:30 - 09:30 AM IST):** UI/UX Design Short Tricks (Figma, Adobe XD, Mobile button sizes, 8pt grid, contrast rules). *Inspired by Behance, Dribbble & Pinterest principles but 100% original.*
-   - **☀️ Afternoon (01:00 - 02:00 PM IST):** Frontend Development Short Tricks (CSS magic, JavaScript hacks, React optimization, clean one-liners).
-   - **🌙 Evening (06:30 - 07:30 PM IST):** Trending AI News & Tool Breakdown (Major updates, breakthrough models, actionable summaries).
-   - **🎉 Weekend Special (Sat & Sun):** Interactive Polls, Quizzes & "A vs B Design/Code Challenge" to get 5x more comments and algorithmic boost!
-2. **🗣️ Super Simple English (No Hard Words):**
-   - Prompts are strictly tuned for Grade 6 simple conversational English. No heavy vocabulary or hard-to-read academic jargon.
-3. **📈 10 to 15 High-Traffic Hashtags:**
-   - Every post includes 10-15 targeted hashtags tailored to that specific post topic to maximize reach.
-4. **🖼️ Automated Visual Graphic Banner (1080x1080):**
-   - Har post ke liye high-res visual card banner generate hota hai jise direct LinkedIn post ke sath attach kiya ja sakta hai.
-5. **🛠️ AI On-Demand Refinement:**
-   - Agar post me code snippet, tone, ya layout badalna ho, direct feedback dekar 1-click me rewrite karwayein.
-6. **📱 WhatsApp Preview & Mobile Streamlit UI:**
-   - Phone par WhatsApp message aayega preview ke liye aur mobile-friendly browser UI se approval/changes kar sakte hain.
+1. **🌐 Trending One-Page Responsive Website:**
+   - Ultra-modern dark glassmorphism design (Tailwind CSS, clean glow aesthetics, mobile & desktop responsive).
+   - Drag & Drop Resume PDF upload.
+   - Clean onboarding form (Full Name, WhatsApp Number, GitHub Username, LinkedIn Access Token).
+
+2. **🔒 Multi-User & Data Isolation (Zero Leakage):**
+   - Har user ka data alag folder me isolate rehta hai (`data/users/<phone>/profile.json`).
+   - Kisi bhi person ka data dusre person se mix nahi hota.
+
+3. **🔔 Admin WhatsApp Notification:**
+   - Jab bhi koi naya user website par resume upload karke register karega, **aapke personal WhatsApp par turant alert aayega**:
+     - *User Name, Phone, GitHub handle, aur Resume Skills ka summary.*
+
+4. **📱 100% WhatsApp-First Control (No Web / Zero Downloads Needed):**
+   - Rozana 3 peak traffic times par bot user ke WhatsApp par draft bhejega.
+   - **Approval:** User bas WhatsApp par **`APPROVE`** ya **`YES`** likhega -> Post turant LinkedIn par auto-upload ho jayegi!
+   - **Modifications/Changes:** Agar user ko draft me koi change chahiye, toh wo seedhe WhatsApp par likhega (e.g. *"Python code add karo"*, *"Isse short karo"*). Bot AI se rewrite karke naya preview wapas WhatsApp par bhej dega!
+
+5. **🐙 Real GitHub Code Link Integration:**
+   - Afternoon Frontend tricks me user ke actual **GitHub profile/repository ka example code link** automatically post ke sath include hoga.
+
+6. **🕒 3 Posts Per Day (Peak Traffic Timing):**
+   - **09:00 AM IST (Morning):** UI/UX Design Short Tricks (Figma, XD, Mobile Button Sizes, 8pt Grid).
+   - **01:00 PM IST (Afternoon):** Frontend Code Shortcuts (CSS, JS, React) + **User's GitHub Code Link**.
+   - **07:00 PM IST (Evening):** Trending AI News & Tool Breakdown.
+   - **Weekends:** Interactive Polls, Quizzes & A vs B Challenge.
+
+7. **🗣️ Super Simple English & 10 to 15 Hashtags:**
+   - Har post Grade 6 plain English me likhi hoti hai (No heavy words).
+   - Niche curated 10-15 trending hashtags automatically aate hain.
 
 ---
 
-## 📁 Project Structure
+## 📁 Project Architecture
 
 ```text
-├── .github/workflows/
-│   └── daily_bot.yml         # GitHub Actions for daily automated run
+├── templates/
+│   └── index.html            # Trending single-page responsive website
 ├── services/
-│   ├── __init__.py
-│   ├── resume_parser.py      # PDF text extract & Gemini profile analysis
-│   ├── post_generator.py     # AI LinkedIn post creation & refinement
-│   ├── linkedin_service.py   # LinkedIn Official UGC API posting
-│   ├── whatsapp_service.py   # Twilio WhatsApp preview messaging
-│   └── storage_service.py    # Local storage for profile & post history
-├── app.py                    # Streamlit Web UI (Mobile optimized)
-├── cli_auto_runner.py        # CLI script for Cron / GitHub Actions
-├── requirements.txt          # Python dependencies
-├── .env.example              # Environment variables template
-├── .gitignore
+│   ├── user_manager.py       # Isolated multi-user storage & state
+│   ├── github_service.py     # User GitHub link generator
+│   ├── whatsapp_service.py   # Twilio WhatsApp sender, Admin alert, User welcome
+│   ├── resume_parser.py      # PDF extraction & Gemini skill analysis
+│   ├── post_generator.py     # Simple English 3x daily post generator & refiner
+│   ├── image_card_service.py # Auto visual banner card creator
+│   └── linkedin_service.py   # LinkedIn official API publisher
+├── server.py                 # FastAPI Web Server + WhatsApp Two-Way Webhook
+├── cli_auto_runner.py        # Multi-user batch dispatcher for Cron / GitHub Actions
+├── app.py                    # Optional Streamlit admin dashboard
+├── requirements.txt
+├── .env.example
 └── README.md
 ```
 
 ---
 
-## 🚀 Quick Setup Guide
+## 🚀 Quick Setup & Run
 
-### 1. Repository Clone & Dependencies Install
+### 1. Dependencies Install Karein
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-
-# Virtual environment create karein (optional but recommended)
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# Dependencies install karein
 pip install -r requirements.txt
 ```
 
@@ -67,93 +74,51 @@ pip install -r requirements.txt
 ```bash
 cp .env.example .env
 ```
-Aur apni keys enter karein:
-
+Aur keys enter karein:
 ```env
-# 1. Google Gemini API (https://aistudio.google.com/)
-GEMINI_API_KEY=AIzaSy...
+# Google Gemini API
+GEMINI_API_KEY=your_gemini_key
 
-# 2. LinkedIn API (https://www.linkedin.com/developers/)
-LINKEDIN_ACCESS_TOKEN=AQV...
-LINKEDIN_PERSON_URN=urn:li:person:YOUR_ID
-
-# 3. WhatsApp Twilio Sandbox (https://www.twilio.com/console)
-TWILIO_ACCOUNT_SID=AC...
-TWILIO_AUTH_TOKEN=your_token
+# WhatsApp Twilio Sandbox
+TWILIO_ACCOUNT_SID=your_twilio_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
 TWILIO_WHATSAPP_NUMBER=whatsapp:+14155238886
-USER_WHATSAPP_NUMBER=whatsapp:+91XXXXXXXXXX
+
+# AAPKA WhatsApp number jahan naye users ka alert aayega
+ADMIN_WHATSAPP_NUMBER=whatsapp:+91XXXXXXXXXX
 ```
 
----
-
-## 📱 Mobile se Streamlit Kaise Chalayein?
-
-### Option A: Apne Ghar ke Wi-Fi / Hotspot par:
+### 3. Server Start Karein
 ```bash
-streamlit run app.py
+python server.py
+# Ya uvicorn ke through:
+uvicorn server:app --host 0.0.0.0 --port 8000 --reload
 ```
-Terminal me `Network URL` dikhega (e.g. `http://192.168.1.15:8501`).
-Apne mobile me Wi-Fi on karke wahi URL browser me kholein. Aapka dashboard phone par open ho jayega!
-
-### Option B: Streamlit Community Cloud (Free & 24/7 Mobile Access):
-1. GitHub par code push karein.
-2. [share.streamlit.io](https://share.streamlit.io/) par jakar repo select karein.
-3. Settings me secrets (API keys) add karein.
-4. Aapko ek permanent live web link mil jayega jisse aap duniya me kahin se bhi phone se chala sakte hain!
+Ab browser me `http://localhost:8000` (ya aapke mobile me `http://<YOUR_IP>:8000`) kholein. Aapko trending single-page onboarding website dikhegi!
 
 ---
 
-## 🔑 API Keys Kaise Milegi?
+## 📲 Twilio WhatsApp Webhook Setup (Two-Way Interaction)
 
-### 1. Google Gemini API (Free)
-1. [Google AI Studio](https://aistudio.google.com/) par jayein.
-2. **"Create API Key"** click karein aur copy karein.
+Aapke phone se reply aane par bot auto-response de sake, iske liye:
+1. Local testing ke liye **ngrok** chalayein:
+   ```bash
+   ngrok http 8000
+   ```
+   (Aapko URL milega jaise: `https://abcd-1234.ngrok-free.app`)
+2. [Twilio Console](https://console.twilio.com/) > **Messaging > WhatsApp Sandbox Settings** me jayein:
+   - **"WHEN A MESSAGE COMES IN"** URL me paste karein:
+     `https://abcd-1234.ngrok-free.app/webhook/whatsapp` (HTTP POST)
+   - Save click karein.
 
-### 2. LinkedIn API & Token
-1. [LinkedIn Developer Portal](https://www.linkedin.com/developers/) par login karein.
-2. **Create App** karein.
-3. **Products** tab me jakar:
-   - "Share on LinkedIn"
-   - "Sign In with LinkedIn using OpenID Connect"
-   dono ko add karein.
-4. **Auth** tab me jakar Token Generator se access token generate karein with `w_member_social` permission.
-5. Apni Person URN nikalne ke liye `https://api.linkedin.com/v2/userinfo` call karein (ya Streamlit app ke sidebar se direct test karein).
-
-### 3. WhatsApp Preview (Twilio Free Sandbox)
-1. [Twilio Console](https://www.twilio.com/console) par free account banayein.
-2. **Messaging > Try SMS / WhatsApp Sandbox** me jayein.
-3. Diye gaye WhatsApp number par sandbox code bhejein (e.g. `join <your-sandbox-word>`).
-4. Account SID aur Auth Token copy karke `.env` me paste karein.
+Ab jab bhi koi WhatsApp par **APPROVE** likhega, bot uske LinkedIn par post upload kar dega! Agar koi edit maangega, bot AI se draft change kar dega.
 
 ---
 
-## ⚙️ GitHub Par Upload Kaise Karein?
-
-Apne terminal me ye commands run karein:
+## 📤 GitHub Par Push Karne Ke Commands
 
 ```bash
-git init
 git add .
-git commit -m "Initial commit: LinkedIn AutoBrand AI Bot with Mobile Streamlit UI & WhatsApp Review"
-
-# GitHub par new repository banane ke baad:
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo-name>.git
-git push -u origin main
+git commit -m "Add trending one-page website, multi-user isolation, admin WhatsApp alerts, GitHub code link, and two-way WhatsApp approval webhook"
+git push origin main
 ```
-
----
-
-## ⏰ Cloud Automated Daily Posting (GitHub Actions)
-
-Agar aap laptop off hone par bhi rozana subah automated run chahte hain:
-1. GitHub Repo ke **Settings > Secrets and variables > Actions** me jayein.
-2. New Repository Secrets add karein:
-   - `GEMINI_API_KEY`
-   - `LINKEDIN_ACCESS_TOKEN`
-   - `LINKEDIN_PERSON_URN`
-   - `TWILIO_ACCOUNT_SID`
-   - `TWILIO_AUTH_TOKEN`
-   - `TWILIO_WHATSAPP_NUMBER`
-   - `USER_WHATSAPP_NUMBER`
-3. `.github/workflows/daily_bot.yml` har din subah automatically run hokar aapke WhatsApp par preview bhej dega!
