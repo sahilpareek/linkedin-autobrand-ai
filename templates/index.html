@@ -247,22 +247,45 @@
             const formData = new FormData(form);
 
             try {
-                const response = await fetch("/api/register", {
-                    method: "POST",
-                    body: formData
-                });
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    successBox.classList.remove("hidden");
-                    form.reset();
-                    document.getElementById("selectedFileName").classList.add("hidden");
-                    document.getElementById("filePrompt").textContent = "Click or Drag & Drop your Resume PDF here";
-                } else {
-                    errorBox.textContent = result.error || "Registration failed. Please check your inputs.";
-                    errorBox.classList.remove("hidden");
+                // If backend API exists, send to /api/register
+                let submitted = false;
+                try {
+                    const response = await fetch("/api/register", {
+                        method: "POST",
+                        body: formData
+                    });
+                    if (response.ok) {
+                        const result = await response.json();
+                        if (result.success) {
+                            submitted = true;
+                        }
+                    }
+                } catch (apiErr) {
+                    // API not on static host
                 }
+
+                // Show success modal + Direct WhatsApp Connect
+                successBox.classList.remove("hidden");
+                const nameVal = form.name.value;
+                const ghVal = form.github_username.value;
+                const waUrl = `https://wa.me/919928215228?text=${encodeURIComponent(`Hi Sahil! I have registered for AutoBrand AI.\nName: ${nameVal}\nGitHub: ${ghVal}`)}`;
+                
+                document.getElementById("waDirectBtn")?.remove();
+                const waBtn = document.createElement("a");
+                waBtn.id = "waDirectBtn";
+                waBtn.href = waUrl;
+                waBtn.target = "_blank";
+                waBtn.className = "inline-flex items-center gap-2 mt-3 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition";
+                waBtn.innerHTML = "📲 Confirm & Connect Directly on WhatsApp 👉";
+                successBox.appendChild(waBtn);
+
+                form.reset();
+                document.getElementById("selectedFileName").classList.add("hidden");
+                document.getElementById("filePrompt").textContent = "Click or Drag & Drop your Resume PDF here";
             } catch (err) {
+                errorBox.textContent = "Error: " + err.message;
+                errorBox.classList.remove("hidden");
+            } finally {
                 errorBox.textContent = "Network error: " + err.message;
                 errorBox.classList.remove("hidden");
             } finally {
