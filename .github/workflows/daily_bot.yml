@@ -1,0 +1,47 @@
+name: LinkedIn Daily Automation Bot
+
+on:
+  schedule:
+    # 04:30 UTC = 10:00 AM IST (Every day)
+    - cron: '30 4 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+    inputs:
+      mode:
+        description: 'Run Mode (preview to WhatsApp or direct post)'
+        required: true
+        default: 'preview'
+        type: choice
+        options:
+          - preview
+          - post
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run LinkedIn Bot
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_WHATSAPP_NUMBER: ${{ secrets.TWILIO_WHATSAPP_NUMBER }}
+          USER_WHATSAPP_NUMBER: ${{ secrets.USER_WHATSAPP_NUMBER }}
+        run: |
+          MODE="${{ github.event.inputs.mode || 'preview' }}"
+          python cli_auto_runner.py --mode $MODE

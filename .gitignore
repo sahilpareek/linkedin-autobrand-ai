@@ -1,0 +1,24 @@
+# Virtual environment & Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+venv/
+env/
+ENV/
+
+# Data & Cache files
+data/
+*.pdf
+profile_cache.json
+posts_history.json
+
+# Streamlit
+.streamlit/secrets.toml
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
