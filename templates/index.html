@@ -63,7 +63,7 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">AutoBrand AI</h1>
-                    <p class="text-xs text-indigo-400 font-medium">WhatsApp-First LinkedIn Growth</p>
+                    <p class="text-xs text-indigo-400 font-medium">Telegram-Powered LinkedIn Growth (100% Free)</p>
                 </div>
             </div>
             <div class="flex items-center space-x-3">
@@ -79,13 +79,13 @@
     <main class="max-w-4xl mx-auto px-4 py-10 sm:py-16 relative z-10">
         <div class="text-center space-y-4 mb-12">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
-                ✨ Zero Manual Effort • 100% WhatsApp Approval
+                ✨ Zero Paid Accounts • 100% Free Telegram Bot Delivery
             </div>
             <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
                 Turn Your Resume into <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Daily LinkedIn Growth</span>
             </h2>
             <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-                Upload your resume once. Our AI automatically crafts 3 daily viral posts (UI/UX Tricks, Frontend Code with your GitHub link, and Trending AI News) in simple English, sending drafts directly to your WhatsApp for 1-click approval.
+                Upload your resume once. Our AI automatically crafts 3 daily viral posts in simple English, sending drafts directly to your Telegram with 1-Tap LinkedIn Post buttons.
             </p>
         </div>
 
@@ -264,20 +264,22 @@
                     // API not on static host
                 }
 
-                // Show success modal + Direct WhatsApp Connect
+                // Show success modal + Direct Telegram Connect
                 successBox.classList.remove("hidden");
                 const nameVal = form.name.value;
                 const ghVal = form.github_username.value;
-                const waUrl = `https://wa.me/919928215228?text=${encodeURIComponent(`Hi Sahil! I have registered for AutoBrand AI.\nName: ${nameVal}\nGitHub: ${ghVal}`)}`;
+                const tgDetails = `Hi Sahil! I registered on AutoBrand AI.%0AName: ${encodeURIComponent(nameVal)}%0AGitHub: ${encodeURIComponent(ghVal)}`;
+                const tgUrl = `https://t.me/share/url?url=https://sahilpareek.github.io/linkedin-autobrand-ai/&text=${tgDetails}`;
                 
+                document.getElementById("tgDirectBtn")?.remove();
                 document.getElementById("waDirectBtn")?.remove();
-                const waBtn = document.createElement("a");
-                waBtn.id = "waDirectBtn";
-                waBtn.href = waUrl;
-                waBtn.target = "_blank";
-                waBtn.className = "inline-flex items-center gap-2 mt-3 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition";
-                waBtn.innerHTML = "📲 Confirm & Connect Directly on WhatsApp 👉";
-                successBox.appendChild(waBtn);
+                const tgBtn = document.createElement("a");
+                tgBtn.id = "tgDirectBtn";
+                tgBtn.href = tgUrl;
+                tgBtn.target = "_blank";
+                tgBtn.className = "inline-flex items-center gap-2 mt-3 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition";
+                tgBtn.innerHTML = "✈️ Confirm & Send Directly to Telegram 👉";
+                successBox.appendChild(tgBtn);
 
                 form.reset();
                 document.getElementById("selectedFileName").classList.add("hidden");

@@ -31,6 +31,10 @@ from services.post_generator import (
 from services.image_card_service import generate_svg_banner
 from services.github_service import append_github_link_to_post
 from services.linkedin_service import publish_linkedin_post
+from services.telegram_service import (
+    notify_admin_telegram_new_user,
+    send_post_draft_to_telegram
+)
 from services.whatsapp_service import (
     send_whatsapp_message,
     notify_admin_new_user,
@@ -88,11 +92,11 @@ async def register_user(
         }
         saved = save_user(user_data)
 
-        # 4. Notify Admin on WhatsApp
+        # 4. Notify Admin on Telegram
         try:
-            notify_admin_new_user(user_data)
+            notify_admin_telegram_new_user(user_data)
         except Exception as e:
-            print(f"Admin WhatsApp Notification Error: {e}")
+            print(f"Admin Telegram Notification Error: {e}")
 
         # 5. Send Welcome WhatsApp Message to User
         try:
@@ -235,14 +239,13 @@ def dispatch_slot_for_all_users(slot: str = "morning"):
             }
             save_pending_post(phone, pending_data)
 
-            # Send draft to user's WhatsApp for 1-click approval
-            send_whatsapp_draft_for_approval(
-                to_number=phone,
+            # Send draft to Telegram with 1-Tap LinkedIn Post Button
+            send_post_draft_to_telegram(
                 post_content=res["content"],
                 slot_name=slot_label,
                 topic=res.get("topic", "")
             )
-            print(f"✅ Draft dispatched to {name} ({phone})")
+            print(f"✅ Draft dispatched to Telegram for {name}")
 
         except Exception as e:
             print(f"❌ Error dispatching to {name} ({phone}): {e}")
